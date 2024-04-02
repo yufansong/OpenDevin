@@ -27,7 +27,7 @@ if os.path.exists("config.toml"):
 config = toml.loads(config_str)
 for key, value in DEFAULT_CONFIG.items():
     if key not in config:
-        config[key] = value if value is not None else os.environ.get(key)
+        config[key] = os.environ.get(key, value)
 
 def _get(key: str, default):
     value = config.get(key, default)
